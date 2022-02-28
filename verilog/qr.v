@@ -7,7 +7,7 @@ module qr #(
    input start,
    input signed [WIDTH-1:0] h11,h12,h13,h14,h21,h22,h23,h24,h31,h32,h33,h34,h41,h42,h43,h44,
 
-   output reg signed [WIDTH-1:0] q11,q12,q13,q14,q21,q22,q23,q24,q31,q32,q33,q34,q41,q42,q43,q44,r11,r12,r13,r14,r22,r23,r24,r33,r34,r44, q_a,
+   output reg signed [WIDTH-1:0] q11,q12,q13,q14,q21,q22,q23,q24,q31,q32,q33,q34,q41,q42,q43,q44,r11,r12,r13,r14,r22,r23,r24,r33,r34,r44,
 
    output reg finish
 );
@@ -65,7 +65,6 @@ module qr #(
          r33 <= 0;
          r34 <= 0;
          r44 <= 0;
-         q_a <= 0;
          cd_h1 <= 0;
          cd_h2 <= 0;
          cd_h3 <= 0;
@@ -120,7 +119,7 @@ module qr #(
             cd_h2 = h22 - r12q21;
             cd_h3 = h32 - r12q31;
             cd_h4 = h42 - r12q41;
-            $display("%b %b %b", h42, r12q41, h42-r12q41);
+           // $display("%b %b %b", h42, r12q41, h42-r12q41);
 
          end
 
@@ -193,7 +192,7 @@ module qr #(
             @(posedge clk) r24 <= r24_ovf[WIDTH / 2 * 3 - 1: WIDTH / 2];
             r34_ovf = q13 * h14 + q23 * h24 + q33 * h34 + q43 * h44;
             @(posedge clk) r34 <= r34_ovf[WIDTH / 2 * 3 - 1: WIDTH / 2];
-           $display("r14_ovf = %b", r14_ovf);
+          // $display("r14_ovf = %b", r14_ovf);
             r14q11_ovf = r14 * q11;
 
             r14q21_ovf = r14 * q21;
@@ -255,13 +254,13 @@ module qr #(
             end
           end
          if(finish) begin
-             $display(" q11 = %b", q11);
-            $display(" q12 = %b", q12);
-            $display(" q21 = %b", q21);
-            $display(" q22 = %b", q22);
-            $display(" r11 = %b", r11);
-            $display(" r12 = %b", r12);
-            $display(" r22 = %b", r22);
+            //  $display(" q11 = %b", q11);
+            // $display(" q12 = %b", q12);
+            // $display(" q21 = %b", q21);
+            // $display(" q22 = %b", q22);
+            // $display(" r11 = %b", r11);
+            // $display(" r12 = %b", r12);
+            // $display(" r22 = %b", r22);
          end
       end
 
